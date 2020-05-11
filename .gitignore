@@ -1,0 +1,7 @@
+node_modules/
+.idea
+.meteor/local
+.DS_STORE
+.cache
+settings/settings-development.json
+.uploads

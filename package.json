@@ -1,0 +1,32 @@
+{
+  "name": "versus-web",
+  "version": "1.0.0",
+  "description": "Admin Versus with Meteor and Vue",
+  "autor": "Luis-1896",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "run:mac": "MONGO_URL=mongodb://localhost:27017/versus-web meteor --settings ./settings/settings-development.json",
+    "run:windows": "SET MONGO_URL=mongodb://localhost:27017/versus-web& meteor --settings ./settings/settings-development.json"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.3",
+    "babel-runtime": "^6.26.0",
+    "bcrypt": "^4.0.1",
+    "busboy": "^0.3.1",
+    "jquery": "^3.4.1",
+    "meteor-node-stubs": "^1.0.0",
+    "vue": "^2.6.11",
+    "vue-meteor-tracker": "^2.0.0-beta.5",
+    "vue-router": "^3.1.6"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js",
+      "server": "server/main.js"
+    },
+    "testModule": "tests/main.js"
+  }
+}
