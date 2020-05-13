@@ -53,7 +53,8 @@
             ...mapMutations('auth', ['setUser', 'authError']),
             async login() {
                 if (await this.isFormValid(this.$refs.loginObserver)) {
-                    Meteor.loginWithPassword(this.user.userOrEmail, this.user.password, (err) => {
+                   // console.log(this.user.userOrEmail);
+                   Meteor.loginWithPassword(this.user.userOrEmail, this.user.password, (err) => {
                         if (err) {
                             this.authError(err.error);
                             this.error = true;
