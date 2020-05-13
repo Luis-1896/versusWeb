@@ -17,6 +17,13 @@ const systemOptions = [
 		description: null,
 		permission: Permissions.PROFILES.LIST,
 		namePath: 'home.profiles'
+	},
+	{
+		icon: 'people',
+		title: 'Jugadores',
+		description: null,
+		permissions: Permissions.PLAYERS.LIST,
+		namePath: 'home.players'
 	}
 ];
 

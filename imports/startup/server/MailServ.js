@@ -32,7 +32,7 @@ emailTemplates.enrollAccount = {
 	},
 	text(user, url) {
 		if (Meteor.isDevelopment) console.info(`Password reset link: ${ url }`);
-		return `Enhorabuena, se ha creado tu cuenta para el sistema antware-meteor-vue. 
+		return `Enhorabuena, se ha creado tu cuenta para el sistema versus. 
         Para establecer una contraseña, 
         visita el siguiente link: \n\n${ url }\n\n`;
 	},

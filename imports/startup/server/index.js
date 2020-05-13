@@ -19,4 +19,7 @@ import '../../api/Profiles/ProfilesPubs';
 import '../../api/SystemOptions/SystemOption';
 import '../../api/SystemOptions/SystemOptionsCtrl';
 
-
+import '../../api/Players/Player';
+import '../../api/Players/PlayersCtrl';
+import '../../api/Players/PlayersPubs';
+import '../../api/Players/PlayersServ';

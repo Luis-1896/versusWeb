@@ -1,6 +1,7 @@
 import loginRoutes from './login';
 import userRoutes from './users';
 import profileRoutes from './profiles';
+import playerRoutes from './players';
 import LytSPA from "../layouts/LytSPA";
 import ConfigureAccount from "../views/Account/ConfigureAccount";
 import Home from "../views/Home/Home";
@@ -42,7 +43,8 @@ export default [
                 }
             },
             userRoutes,
-            profileRoutes
+            profileRoutes,
+            playerRoutes
         ]
     }
 ]
