@@ -188,7 +188,12 @@
 				'users': []
 			},
 			users() {
-				return Meteor.users.find({ _id: { $ne: Meteor.userId() } }).fetch();
+				//return Meteor.users.find({ _id: { $ne: Meteor.userId() } }).fetch();
+				const usuarios= Meteor.users.find({ _id: { $ne: Meteor.userId()}}).fetch();
+				const sinJugadores=usuarios.filter(function(usuario){
+					return usuario.profile.perfil!=='player';
+				});
+				return sinJugadores;
 			}
 		}
 	};

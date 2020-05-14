@@ -1,6 +1,6 @@
 <template>
-	<ValidationObserver ref="dataFormObserver">
-		<v-form @submit.prevent="saveUser">
+<ValidationObserver ref="dataFormObserver" v-slot="{validation,reset}">
+		<v-form @submit.prevent="saveUser()" id="saveUser" autocomplete="off">
 			<v-card>
 				<v-card-title>
 					<div class="subtitle-2">
@@ -11,58 +11,54 @@
 					<v-col>
 						<v-row class="justify-sm-space-between">
 							<v-btn color="primary" class="mb-5" rounded depressed
-							       v-on:click="tempSrc=null">
+								   v-on:click="tempSrc=null">
 								Cambiar
 							</v-btn>
-							<v-btn type="submit" color="primary" rounded depressed>
+							<v-btn type="submit" form="saveUser" color="primary" rounded depressed>
 								Guardar
 							</v-btn>
 						</v-row>
 					</v-col>
-					<v-col class="ml-1">
+					<v-col class="ml-1 ">
 						<v-image-input v-if="!tempSrc" v-model="photoFileUser"
-						               :image-width="100"
-						               :image-height="150"
-						               overlay-background-color="rgba(0,0,0,0.5)"
-						               overlay-boder-color="#fff"
-						               overlay-padding="0px"
-						               rotate-clockwise-icon="mdi-rotate-right"
-						               rotate-counter-clockwise-icon="mdi-rotate-left"
-						               upload-icon="cloud_upload"
-						               scaling-slider-color
-						               clearable image-format="jpg"/>
+									   :image-width="100"
+									   :image-height="150"
+									   overlay-background-color="rgba(0,0,0,0.5)"
+									   overlay-boder-color="#fff"
+									   overlay-padding="0px"
+									   rotate-clockwise-icon="mdi-rotate-right"
+									   rotate-counter-clockwise-icon="mdi-rotate-left"
+									   upload-icon="cloud_upload"
+									   scaling-slider-color
+									   clearable image-format="jpg"/>
 						<img v-else id="face-preview" :src="tempSrc || 'img/user.png'"
-						     :alt="user.nombre" width="100px">
+							 :alt="user.nombre" width="100px" ml="6">
 					</v-col>
 				</v-col>
 				<v-col>
 					<v-card-text>
-						<ValidationProvider v-slot="{ errors }" name="nombre" rules="required|alpha_spaces">
+						<ValidationProvider v-slot="{ errors }" name="nombre" rules="required">
 							<v-text-field v-model="user.nombre" id="inputNombre" name="name"
-							              :error-messages="errors" disabled
-							              label="Nombre completo*" required>
+										  :error-messages="errors" disabled
+										  label="Nombre completo*" required>
 							</v-text-field>
 						</ValidationProvider>
-						<ValidationProvider v-slot="{ errors }" name="usuario" rules="required|alpha_dash">
+						<ValidationProvider v-slot="{ errors }" name="usuario" rules="required">
 							<v-text-field v-model="user.usuario"
-							              id="inputUsuario"
-							              :error-messages="errors"
-							              name="username" disabled
-							              label="Usuario*" required>
+										  id="inputUsuario"
+										  :error-messages="errors"
+										  name="username" disabled
+										  label="Usuario*" required>
 							</v-text-field>
 						</ValidationProvider>
 						<ValidationProvider v-slot="{errors}" name="correo electrónico" rules="required|email">
 							<v-text-field v-model="user.correo"
-							              id="inputEmail" name="email"
-							              :error-messages="errors" disabled
-							              label="Correo electrónico*"
-							              required>
+										  id="inputEmail" name="email"
+										  :error-messages="errors" disabled
+										  label="Correo electrónico*"
+										  required>
 							</v-text-field>
 						</ValidationProvider>
-
-						<v-select v-model="user.perfil" :items="profiles" id="selectPerfil" disabled v-show="false"
-						          label="Perfil" required>
-						</v-select>
 					</v-card-text>
 				</v-col>
 			</v-card>
@@ -75,13 +71,15 @@
 	import profilesMixin from '../../mixins/accounts/profiles';
 	import { mapMutations } from 'vuex';
 	import { ValidationProvider, ValidationObserver } from 'vee-validate';
+	import GeneralDataPlayer from './GeneralDataPlayer';
 
 	export default {
 		name: 'GeneralData',
 		mixins: [validateMixin, profilesMixin],
 		components: {
 			ValidationProvider,
-			ValidationObserver
+			ValidationObserver,
+			GeneralDataPlayer
 		},
 		data() {
 			return {

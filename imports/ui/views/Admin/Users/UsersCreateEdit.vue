@@ -167,7 +167,11 @@
 				'allProfiles': []
 			},
 			profiles() {
-				return Profile.find({}).fetch();
+				const allProfile=Profile.find({}).fetch();
+				const selectProfile=allProfile.filter(function(profile){
+					return profile.name !=='player';
+				});
+				return selectProfile;
 			}
 		}
 	};

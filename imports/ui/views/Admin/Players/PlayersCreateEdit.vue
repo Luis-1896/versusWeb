@@ -158,6 +158,7 @@
                     firstName: null,
                     lastName: null,
                     username: null,
+                    email: null,
                     perfil: 'player',
                     gender: null,
                     birthday: new Date().toISOString().substr(0, 10),
@@ -196,7 +197,6 @@
             },
             async savePlayer(){
                 if(await this.isFormValid(this.$refs.playerFormObserver)){
-                    //console.log(this.player);
                     this.$loader.activate('Guardando jugador ...');
                     Meteor.call('savePlayer', {player: this.player, photoFileUser: this.photoFileUser}, err => {
                         this.$loader.deactivate();

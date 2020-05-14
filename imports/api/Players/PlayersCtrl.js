@@ -6,6 +6,7 @@ import {check} from 'meteor/check';
 import Utilities from "./../../startup/server/Utilities";
 import fileHelper from './../../startup/server/FileOperations';
 import UsersServ from '../Users/UsersServ';
+import PlayersServ from "./PlayersServ";
 
 // Permisos
 import Permissions from "../../startup/server/Permissions";
@@ -30,11 +31,11 @@ export const savePlayerMethod = new ValidatedMethod({
         if (player._id !== null) {//Si existe entonces actualiza
             try {
                 check(player._id, String);
-                await UsersServ.updateUser(player, photoFileUser);
-                responseMessage.create(true, "Usuario actualizado");
+                await PlayersServ.updatePlayer(player, photoFileUser);
+                responseMessage.create(true, "Jugador actualizado");
             } catch (err) {
                 console.error("Error updating user: ", err);
-                throw new Meteor.Error("500", "Error al actualizar el usuario.", err);
+                throw new Meteor.Error("500", "Error al actualizar el jugador.", err);
             }
         } else {//Sino entonces lo crea
             try {
