@@ -55,11 +55,13 @@ export default {
         return responseMessage;
     },
     async createUser(userData, photoFileUser) {
+        console.log(photoFileUser);
         let responseMessage = new ResponseMessage();
         if (photoFileUser) {
             userData.profile["path"] = "users/" + userData.username;
         }
         let idUser = Accounts.createUser(userData);
+        console.log(idUser)
         if (idUser) {
             responseMessage.data = {idUser};
             this.setUserRoles(idUser, userData.profile.perfil);
