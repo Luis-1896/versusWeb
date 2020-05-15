@@ -5,6 +5,7 @@ import playerRoutes from './players';
 import LytSPA from "../layouts/LytSPA";
 import ConfigureAccount from "../views/Account/ConfigureAccount";
 import Home from "../views/Home/Home";
+import FriendRequest from "../views/Admin/Friends/FriendRequest";
 
 export default [
     {
@@ -40,6 +41,16 @@ export default [
                 },
                 components: {
                     sectionView: ConfigureAccount
+                }
+            },
+            {
+                path: 'friend',
+                name: 'home.friends',
+                meta: {
+                    breadcrumb: "Amigos"
+                },
+                components: {
+                    sectionView: FriendRequest
                 }
             },
             userRoutes,

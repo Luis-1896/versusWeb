@@ -13,6 +13,7 @@
         </template>
         <v-list>
             <v-list-item :to="{name:'home.account'}">Cuenta</v-list-item>
+            <v-list-item :to="{name:'home.friends'}" v-if="player">Amigos</v-list-item>
             <v-list-item  href="#" v-on:click="closeSession()">Cerrar sesión</v-list-item>
         </v-list>
     </v-menu>
@@ -29,7 +30,8 @@
                     profile: {},
                     username: null
                 },
-                tempSrc:null
+                tempSrc:null,
+                player:null
             };
         },
         methods: {
@@ -42,6 +44,7 @@
             setSession() {
                 if (Meteor.userId() !== null) {
                     this.user = this.$store.state.auth.user;
+                    this.user.profile.perfil==='player'? this.player=true : this.player=false;
                     const pathImage=this.user.profile.path + "/" + this.user.username + ".jpg";
                     if(this.user.profile.path != undefined){
                         Meteor.call('getImageSrc', {assetPath: pathImage},(err, src) => {
