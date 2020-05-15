@@ -2,7 +2,7 @@
   "name": "versus-web",
   "version": "1.0.0",
   "description": "Admin Versus with Meteor and Vue",
-  "autor": "Luis-1896",
+  "author": "Luis-1896",
   "license": "MIT",
   "private": true,
   "scripts": {
