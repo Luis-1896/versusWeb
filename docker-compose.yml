@@ -16,7 +16,7 @@ services:
     volumes:
       - $PWD/.uploads:/opt/versus-files
     networks:
-      - versus-net
+      - scaffold-net
   mongo:
     container_name: mongo
     command:
@@ -32,7 +32,7 @@ services:
       - $PWD/data:/data/db
       - $PWD/database:/opt/database
     networks:
-      - versus-net
+      - scaffold-net
   crontab:
     container_name: crontab
     image: crontab
@@ -46,6 +46,6 @@ services:
     volumes:
       - ./backups:/opt/backups
     networks:
-      - versus-net
+      - scaffold-net
 networks:
-  versus-net:
+  scaffold-net:
