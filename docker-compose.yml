@@ -16,12 +16,12 @@ services:
     volumes:
       - $PWD/.uploads:/opt/versus-files
     networks:
-      - scaffold-net
+      - versus-net
   mongo:
     container_name: mongo
     command:
       - --storageEngine=wiredTiger
-    image: mongo:4.2.6-bionic
+    image: mongo:4.2.5-bionic
     restart: always
     ports:
       - 27017:27017
@@ -32,7 +32,7 @@ services:
       - $PWD/data:/data/db
       - $PWD/database:/opt/database
     networks:
-      - scaffold-net
+      - versus-net
   crontab:
     container_name: crontab
     image: crontab
@@ -46,6 +46,6 @@ services:
     volumes:
       - ./backups:/opt/backups
     networks:
-      - scaffold-net
+      - versus-net
 networks:
-  scaffold-net:
+  versus-net:
