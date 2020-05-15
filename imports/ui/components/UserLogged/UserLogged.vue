@@ -42,7 +42,6 @@
             setSession() {
                 if (Meteor.userId() !== null) {
                     this.user = this.$store.state.auth.user;
-                    console.log(this.user);
                     const pathImage=this.user.profile.path + "/" + this.user.username + ".jpg";
                     if(this.user.profile.path != undefined){
                         Meteor.call('getImageSrc', {assetPath: pathImage},(err, src) => {

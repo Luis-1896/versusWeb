@@ -197,7 +197,6 @@
         methods: {
             renderImage() {
                 let pathImage = 'users/'+ this.player.username+'/'+ this.player.username + '.jpg';
-                console.log(pathImage);
                 Meteor.call('getImageSrc', { assetPath: pathImage }, (err, src) => {
                     this.tempSrc = src;
                 });
@@ -210,7 +209,6 @@
             },
             async saveUser() {
                 if (await this.isFormValid(this.$refs.dataFormObserver)) {
-                    console.log(this.player);
                     Meteor.call('savePlayer',{player: this.player, photoFileUser: this.photoFileUser }, (err) => {
                             if (err) {
                                 console.error('Error to save user: ', err);
@@ -221,17 +219,6 @@
                                 this.$alert.showAlertSimple('success', 'Se ha guardado la nueva configuración.');
                             }
                     });
-                   /* Meteor.call('saveUser', { user: this.user, photoFileUser: this.photoFileUser },
-                        (err) => {
-                            if (err) {
-                                console.error('Error to save user: ', err);
-                                this.$alert.showAlertSimple('error', 'Ocurrió un error al guardar la configuración.');
-                            } else {
-                                this.setUser(Meteor.user());
-                                this.$root.$emit('setUserLogged');
-                                this.$alert.showAlertSimple('success', 'Se ha guardado la nueva configuración.');
-                            }
-                        });*/
                 }
             }
         }
