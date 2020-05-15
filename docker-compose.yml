@@ -21,7 +21,7 @@ services:
     container_name: mongo
     command:
       - --storageEngine=wiredTiger
-    image: mongo:4.2.5-bionic
+    image: mongo:4.2.6-bionic
     restart: always
     ports:
       - 27017:27017
